@@ -1,5 +1,11 @@
 package com.DwarfPlanet.TheTower;
 
+import java.awt.image.BufferedImage;
+
+import com.DwarfPlanet.TheTower.Objects.Block;
+import com.DwarfPlanet.TheTower.Objects.Player;
+import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
+
 public class Draw {
 	
 	public static void rectangle(int x,int y, int width, int height, int color) {
@@ -22,8 +28,18 @@ public class Draw {
 		}
 	}	
 	
-	public static void texture(int x, int y, int width, int height, int cellX, int cellY, boolean metadata) {
-		//TODO: add texture importer
+	public static void texture(int x, int y, int width, int height, String path, int cellX, int cellY, boolean metadata) {
+		BufferedImage image = BufferedImageLoader.loadImage(path);
+		int w = image.getWidth();
+		int h = image.getHeight();
+		
+		for(int xx = cellX * width; xx < cellX * width + width; xx++){
+			for(int yy = cellY * height; yy < cellY * height + height; yy++){
+				int pixel = image.getRGB(xx, yy);
+				if (pixel != 0xff00ffff)
+					rectangle(xx + x, yy + y, 1, 1, pixel);
+			}
+		}
 	}
 	
 }

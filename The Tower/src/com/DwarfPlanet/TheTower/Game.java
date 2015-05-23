@@ -32,9 +32,7 @@ public class Game extends Canvas implements Runnable{
 	
 	public void init(){
 		
-		BufferedImageLoader loader = new BufferedImageLoader();
-		
-		BufferedImage level = loader.loadImage("/Level-1.png");
+		BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
 		
 		handler = new Handler();
 		

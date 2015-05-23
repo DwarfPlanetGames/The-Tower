@@ -33,8 +33,8 @@ public class Player extends GameObject{
 
 	
 	public void render() {
-		Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
-		
+		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, "/Level-1.png", 0, 0, false);
 	}
 
 	

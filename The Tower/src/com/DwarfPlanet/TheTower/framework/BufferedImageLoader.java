@@ -5,13 +5,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import com.DwarfPlanet.TheTower.Game;
+
 public class BufferedImageLoader {
-	private BufferedImage image;
 	
-	public BufferedImage loadImage(String path){
-		
+	
+	public static BufferedImage loadImage(String path){
+		BufferedImage image = new BufferedImage(1,1,BufferedImage.TYPE_INT_RGB);
 		try{
-			image = ImageIO.read(getClass().getResourceAsStream(path));
+			image = ImageIO.read(new BufferedImageLoader().getClass().getResourceAsStream(path));
 		}catch (IOException e){
 			e.printStackTrace();
 		}
