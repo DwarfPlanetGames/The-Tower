@@ -1,9 +1,8 @@
 package com.DwarfPlanet.TheTower;
 
+import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import com.DwarfPlanet.TheTower.Objects.Block;
-import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 
 public class Draw {
@@ -29,15 +28,27 @@ public class Draw {
 	}	
 	
 	public static void texture(int x, int y, int width, int height, String path, int cellX, int cellY, boolean metadata) {
-		BufferedImage image = BufferedImageLoader.loadImage(path);
-		int w = image.getWidth();
-		int h = image.getHeight();
-		
-		for(int xx = cellX * width; xx < cellX * width + width; xx++){
-			for(int yy = cellY * height; yy < cellY * height + height; yy++){
-				int pixel = image.getRGB(xx, yy);
-				if (pixel != 0xff00ffff)
-					rectangle(xx + x, yy + y, 1, 1, pixel);
+		boolean draw = false;
+		Rectangle r = new Rectangle();
+		r.x = Game.camX;
+		r.y = Game.camY;
+		r.width = Game.width;
+		r.height = Game.height;
+		if (r.contains(x,y)) draw = true;
+		if (r.contains(x+width,y)) draw = true;
+		if (r.contains(x,y+height)) draw = true;
+		if (r.contains(x+width,y+height)) draw = true;
+		if (draw) {
+			BufferedImage image = BufferedImageLoader.loadImage(path);
+			int w = image.getWidth();
+			int h = image.getHeight();
+			
+			for(int xx = cellX * width; xx < cellX * width + width; xx++){
+				for(int yy = cellY * height; yy < cellY * height + height; yy++){
+					int pixel = image.getRGB(xx, yy);
+					if (pixel != 0xffff00ff)
+						rectangle(xx + x, yy + y, 1, 1, pixel);
+				}
 			}
 		}
 	}

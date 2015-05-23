@@ -10,9 +10,9 @@ import com.DwarfPlanet.TheTower.framework.ObjectId;
 public class Block extends GameObject{
 
 	public Block(float x, float y) {
-		super(x, y,64f,64f, ObjectId.Block);
-		width = 64;
-		height = 64;
+		super(x, y,128f,128f, ObjectId.Block);
+		width = 128;
+		height = 128;
 	}
 
 	
@@ -23,8 +23,8 @@ public class Block extends GameObject{
 
 
 	public void render() {
-		Draw.rectangle((int)x, (int)y,(int) width,(int) height, 0xff0000);
-		
+		//Draw.rectangle((int)x, (int)y,(int) width,(int) height, 0xff0000);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, "/128SpriteSheet.png", 0, 0, false);
 	}
 
 
