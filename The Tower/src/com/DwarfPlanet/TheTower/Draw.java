@@ -3,8 +3,6 @@ package com.DwarfPlanet.TheTower;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
-import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
-
 public class Draw {
 	
 	public static void rectangle(int x,int y, int width, int height, int color) {
@@ -45,10 +43,7 @@ public class Draw {
 			y += Game.camY;
 		}
 		
-		if (draw) {
-			int w = image.getWidth();
-			int h = image.getHeight();
-			
+		if (draw) {			
 			for(int xx = cellX * width; xx < cellX * width + width; xx++){
 				for(int yy = cellY * height; yy < cellY * height + height; yy++){
 					int pixel = image.getRGB(xx, yy);

@@ -5,8 +5,6 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
-import com.DwarfPlanet.TheTower.Game;
-
 public class BufferedImageLoader {
 	
 	

@@ -1,6 +1,5 @@
 package com.DwarfPlanet.TheTower.Objects;
 
-import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
@@ -10,6 +9,7 @@ import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 import com.DwarfPlanet.TheTower.framework.GameObject;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.ObjectId;
+import com.DwarfPlanet.TheTower.framework.Side;
 
 public class Player extends GameObject{
 	
@@ -31,7 +31,6 @@ public class Player extends GameObject{
 		Game.camX = (int) x - Game.width / 2 + (int)width / 2;
 		Game.camY = (int)y - Game.height / 2 + (int)height / 2;
 		
-		System.out.println("Y " +(int) y + " X " +(int) x);
 	}
 
 	
@@ -39,13 +38,4 @@ public class Player extends GameObject{
 		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
 		Draw.texture((int) x, (int) y, (int) width,  (int) height, image, 0, 0, false);
 	}
-
-	
-	public Rectangle getBounds() {
-		return null;
-	}
-
-
-
-
 }

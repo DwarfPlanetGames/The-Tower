@@ -20,7 +20,6 @@ public abstract class GameObject {
 	
 	public abstract void tick(LinkedList<GameObject> object);
 	public abstract void render();
-	public abstract Rectangle getBounds();
 	
 	public float getX(){
 		return x;
@@ -48,6 +47,28 @@ public abstract class GameObject {
 	}
 	public ObjectId getId(){
 		return id;
+	}
+	public Rectangle getBounds() {
+		Rectangle r = new Rectangle();
+		r.x=(int)x;r.y=(int)y;
+		r.width=(int)width;r.height=(int)height;
+		return r;
+	}
+	public Rectangle getBounds(Side s, int pinch) {
+		int v = pinch;
+		if (s == Side.top) {
+			return new Rectangle((int) x + v, (int) y, (int) width - 2*v, (int) height / 2);
+		}
+		if (s == Side.bottom) {
+			return new Rectangle((int) x + v, (int) y + (int) width / 2, (int) width - 2*v, (int) height / 2);
+		}
+		if (s == Side.left) {
+			return new Rectangle((int) x, (int) y + v, (int) v, (int) height - 2*v);
+		}
+		if (s == Side.right) {
+			return new Rectangle((int) x + (int) width - v, (int) y + v, (int) v, (int) height - 2*v);
+		}
+		throw new NullPointerException("Couldn't generate one of the four rectangles: top, bottom, left, right.");
 	}
 
 }
