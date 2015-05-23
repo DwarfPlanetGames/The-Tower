@@ -111,12 +111,22 @@ public class Game extends Canvas implements Runnable{
 		
 		Graphics2D g2d = (Graphics2D) g;
 		
-		g.drawImage(img,0,0,width*Window.scale + 11,height*Window.scale + 10,null);
+		if (camX < 0) camX = 0;
+		if (camY < 0) camY = 0;
+		if (camX+width > 16*128) camX = 16*128-width;
+		if (camY+height > 16*128) camY = 16*128-height;
+		
 		for(int i =0; i < pixels.length;i++){
 			pixels[i] = 0;
 		}
 		
+		GraphicsProcessing.preBuffer();
 		handler.render();
+		GraphicsProcessing.postBuffer();
+		
+		g.drawImage(img,0,0,width*Window.scale + 11,height*Window.scale + 10,null);
+		GraphicsProcessing.postGraphics(g2d);
+		
 		g.dispose();
 		bs.show();
 		
@@ -139,7 +149,7 @@ public class Game extends Canvas implements Runnable{
 				}
 				
 				if(red == 0 && green == 0 && blue == 255){
-					handler.addObject(new Player(0,0,handler));//xx*128,yy*128,handler));
+					handler.addObject(new Player(xx*128,yy*128,handler));
 				}
 			}
 		}

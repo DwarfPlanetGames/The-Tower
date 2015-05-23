@@ -27,7 +27,7 @@ public class Draw {
 		}
 	}	
 	
-	public static void texture(int x, int y, int width, int height, BufferedImage image, int cellX, int cellY, boolean metadata) {
+	public static void texture(int x, int y, int width, int height, BufferedImage image, int cellX, int cellY, boolean dontMoveToCam) {
 		boolean draw = false;
 		Rectangle r = new Rectangle();
 		r.x = Game.camX;
@@ -38,6 +38,13 @@ public class Draw {
 		if (r.contains(x+width,y)) draw = true;
 		if (r.contains(x,y+height)) draw = true;
 		if (r.contains(x+width,y+height)) draw = true;
+		
+		if (dontMoveToCam) {
+			draw = true;
+			x += Game.camX;
+			y += Game.camY;
+		}
+		
 		if (draw) {
 			int w = image.getWidth();
 			int h = image.getHeight();
