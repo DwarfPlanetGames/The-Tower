@@ -1,10 +1,12 @@
 package com.DwarfPlanet.TheTower.Objects;
 
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 
 import com.DwarfPlanet.TheTower.Draw;
 import com.DwarfPlanet.TheTower.Game;
+import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 import com.DwarfPlanet.TheTower.framework.GameObject;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.ObjectId;
@@ -12,6 +14,7 @@ import com.DwarfPlanet.TheTower.framework.ObjectId;
 public class Player extends GameObject{
 	
 	private Handler handler;
+	private static final BufferedImage image = BufferedImageLoader.loadImage("/Level-1.png");
 
 	public Player(float x, float y,Handler handler) {
 		super(x, y, 64f, 64f, ObjectId.Player);
@@ -34,7 +37,7 @@ public class Player extends GameObject{
 	
 	public void render() {
 		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
-		Draw.texture((int) x, (int) y, (int) width,  (int) height, "/Level-1.png", 0, 0, false);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, image, 0, 0, false);
 	}
 
 	

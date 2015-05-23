@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 
 public class Window {
 	
-	public static int scale = 3;
+	public static int scale = 2;
 	
 	public Window(int w, int h, String title,Game game){
 		
