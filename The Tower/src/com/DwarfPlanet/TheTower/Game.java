@@ -157,7 +157,7 @@ public class Game extends Canvas implements Runnable{
 	
 	
 	public static void main(String args[]){
-		new Window(800, 500, "the floor",new Game());
+		new Window(800, 500, "The Tower",new Game());
 	}
 
 }
