@@ -21,4 +21,9 @@ public class Draw {
 			}
 		}
 	}	
+	
+	public static void texture(int x, int y, int width, int height, int cellX, int cellY, boolean metadata) {
+		//TODO: add texture importer
+	}
+	
 }
