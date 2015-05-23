@@ -10,6 +10,7 @@ public class Draw {
 		if (x > Game.width) x = Game.width;
 		if(x2 < 0) x2 = 0;
 		if(x2 > Game.width) x2 = Game.width;
+		//Anything
 		int y2 = y + height;
 		if (y < 0) y = 0;
 		if (y > Game.height) y = Game.height;
