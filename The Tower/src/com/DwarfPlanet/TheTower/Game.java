@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
 import com.DwarfPlanet.TheTower.Objects.Block;
+import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 import com.DwarfPlanet.TheTower.framework.Handler;
@@ -150,6 +151,10 @@ public class Game extends Canvas implements Runnable{
 				
 				if(red == 0 && green == 0 && blue == 255){
 					handler.addObject(new Player(xx*128,yy*128,handler));
+				}
+				
+				if(red == 0 && green == 255 && blue == 255) {
+					handler.addObject(new Hole(xx*128,yy*128));
 				}
 			}
 		}
