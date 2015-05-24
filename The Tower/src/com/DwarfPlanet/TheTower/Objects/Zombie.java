@@ -29,6 +29,22 @@ public class Zombie extends GameObject {
 				if(temp.x < x) x -= walkSpeed;
 				if(temp.y > y) y += walkSpeed;
 				if(temp.y < y) y -= walkSpeed;
+				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
+					y = temp.y + temp.height;
+					velY = 0;
+				}
+				if (getBounds(Side.bottom,v).intersects(temp.getBounds())) {
+					y = temp.y - height;
+					velY = 0;
+				}
+				if (getBounds(Side.left,v).intersects(temp.getBounds())) {
+					x = temp.x + temp.width;
+					velX = 0;
+				}
+				if (getBounds(Side.right,v).intersects(temp.getBounds())) {
+					x = temp.x - width;
+					velX = 0;
+				}
 				break;
 			case Zombie:
 				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
