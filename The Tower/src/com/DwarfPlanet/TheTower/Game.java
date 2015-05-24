@@ -11,7 +11,6 @@ import com.DwarfPlanet.TheTower.Objects.Block;
 import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
-import com.DwarfPlanet.TheTower.framework.Calc;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 import com.DwarfPlanet.TheTower.framework.Level;
