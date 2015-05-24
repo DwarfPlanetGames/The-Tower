@@ -17,7 +17,7 @@ public class Zombie extends GameObject {
 		super(x, y, 64, 64, ObjectId.Zombie);
 		this.handler = handler;
 	}
-
+//
 	@Override
 	public void tick(LinkedList<GameObject> object) {
 		for (int i = 0; i < handler.object.size(); i++) {
