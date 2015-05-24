@@ -12,7 +12,7 @@ public class GraphicsProcessing {
 	public static void preBuffer() {
 		for (int x = -1; x < Game.width / 128 + 1; x++) {
 			for (int y = -Game.height / 128 - 1; y < 1; y++) {
-				Draw.texture(-Game.camX % 128 + 128 * x, -Game.camY % 128 - 128 * y, 128, 128, image, 1, 0, true);
+				Draw.texture(-Game.camX % 128 + 128 * x, -Game.camY % 128 - 128 * y, 128, 128, image, 128, 0, true);
 			}
 		}
 	}

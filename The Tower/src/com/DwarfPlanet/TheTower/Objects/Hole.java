@@ -26,7 +26,7 @@ public class Hole extends GameObject {
 
 	@Override
 	public void render() {
-		Draw.texture((int) x, (int) y, (int) width,  (int) height, image, 4, 0, false);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, image, 128*2, 0, false);
 	}
 
 }

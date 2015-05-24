@@ -44,8 +44,8 @@ public class Draw {
 		}
 		
 		if (draw) {			
-			for(int xx = cellX * width; xx < cellX * width + width; xx++){
-				for(int yy = cellY * height; yy < cellY * height + height; yy++){
+			for(int xx = cellX; xx < cellX + width; xx++){
+				for(int yy = cellY; yy < cellY + height; yy++){
 					int pixel = image.getRGB(xx, yy);
 					if (pixel != 0xffff00ff)
 						rectangle(xx + x, yy + y, 1, 1, pixel);
