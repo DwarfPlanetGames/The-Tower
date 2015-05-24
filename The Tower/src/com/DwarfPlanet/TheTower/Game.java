@@ -36,7 +36,7 @@ public class Game extends Canvas implements Runnable{
 		
 		handler = new Handler();
 		
-		LoadImageLevel(level);
+		LoadImageLevel(level, 0, 0);
 		
 		this.addKeyListener(new KeyInput(handler));
 	}
@@ -133,12 +133,12 @@ public class Game extends Canvas implements Runnable{
 		
 	}
 	
-	private void LoadImageLevel(BufferedImage image){
+	private void LoadImageLevel(BufferedImage image, int x, int y){
 		int w = image.getWidth();
 		int h = image.getHeight();
 		
-		for(int xx = 0; xx < h; xx++){
-			for(int yy = 0; yy < w; yy++){
+		for(int xx = x * 16; xx < x * 16 + 16; xx++){
+			for(int yy = y * 16; yy < y * 16 + 16; yy++){
 				int pixel = image.getRGB(xx, yy);
 				int red = (pixel >> 16) & 0xff;
 				int green = (pixel >> 8) & 0xff;
