@@ -34,9 +34,10 @@ public class Player extends GameObject{
 			GameObject temp = handler.object.get(i);
 			
 			//Exceptions
-			if (!(
-					temp.id == ObjectId.Player
+			if (!( false
+					|| temp.id == ObjectId.Player
 					|| temp.id == ObjectId.Hole
+					|| temp.id == ObjectId.Entry
 					)){
 				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
 					y = temp.y + temp.height;

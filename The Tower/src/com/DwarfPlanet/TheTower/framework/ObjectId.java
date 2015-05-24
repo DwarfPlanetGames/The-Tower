@@ -4,6 +4,7 @@ public enum ObjectId {
 	Player,
 	Block,
 	Hole,
+	Entry,
 	
 	;
 }

@@ -8,6 +8,7 @@ import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
 import com.DwarfPlanet.TheTower.Objects.Block;
+import com.DwarfPlanet.TheTower.Objects.Entry;
 import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
@@ -28,7 +29,8 @@ public class Game extends Canvas implements Runnable{
 	public static int camToX, camToY;
 	public static int leveli = 0;
 	
-	public static BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
+	public static final BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
+	public static final BufferedImage texture = BufferedImageLoader.loadImage("/128SpriteSheet.png");
 	
 
 	
@@ -40,7 +42,7 @@ public class Game extends Canvas implements Runnable{
 		
 		handler = new Handler();
 		
-		leveli = -1;
+		leveli = -1 + 1;
 		levelUp();
 		
 		this.addKeyListener(new KeyInput(handler));
@@ -145,8 +147,8 @@ public class Game extends Canvas implements Runnable{
 	public static void levelUp() {
 		leveli++;
 		LoadImageLevel(level, Level.dim(leveli, 8).x, Level.dim(leveli, 8).y);
-		camX = 0;
-		camY = 0;
+		camX = 0; camToX = 0;
+		camY = 0; camToY = 0;
 	}
 	
 	private static void LoadImageLevel(BufferedImage image, int x, int y){
@@ -164,11 +166,15 @@ public class Game extends Canvas implements Runnable{
 				}
 				
 				if(red == 0 && green == 0 && blue == 255){
-					handler.addObject(new Player(xx*128,yy*128,handler));
+					handler.addObject(new Entry (xx*128,yy*128));
+					handler.addObject(new Player(xx*128+32,yy*128+32,handler));
 				}
 				
 				if(red == 0 && green == 255 && blue == 255) {
 					handler.addObject(new Hole(xx*128,yy*128));
+				}
+				if(red == 255 && green == 255 && blue == 0) {
+					//TODO add table
 				}
 			}
 		}
