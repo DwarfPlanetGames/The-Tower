@@ -20,7 +20,6 @@ public class Hole extends GameObject {
 
 	@Override
 	public void tick(LinkedList<GameObject> object) {
-		// TODO Auto-generated method stub
 		
 	}
 

@@ -36,7 +36,7 @@ public class Player extends GameObject{
 			//Exceptions
 			if (!(
 					temp.id == ObjectId.Player
-					//|| temp.id == ObjectId.Hole
+					|| temp.id == ObjectId.Hole
 					)){
 				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
 					y = temp.y + temp.height;
@@ -54,11 +54,15 @@ public class Player extends GameObject{
 					x = temp.x - width;
 					velX = 0;
 				}
+			} else if (temp.id == ObjectId.Hole) {
+				if (getBounds().intersects(temp.getBounds())) {
+					Game.levelUp();
+				}
 			}
 		}
 		
-		Game.camX = (int) x - Game.width / 2 + (int)width / 2;
-		Game.camY = (int)y - Game.height / 2 + (int)height / 2;
+		Game.camToX = (int) x - Game.width / 2 + (int)width / 2;
+		Game.camToY = (int)y - Game.height / 2 + (int)height / 2;
 	}
 
 	

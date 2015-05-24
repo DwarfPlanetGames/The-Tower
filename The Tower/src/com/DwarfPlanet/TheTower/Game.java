@@ -11,8 +11,10 @@ import com.DwarfPlanet.TheTower.Objects.Block;
 import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
+import com.DwarfPlanet.TheTower.framework.Calc;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
+import com.DwarfPlanet.TheTower.framework.Level;
 
 public class Game extends Canvas implements Runnable{
 
@@ -22,24 +24,29 @@ public class Game extends Canvas implements Runnable{
 	private Thread thread;
 	
 	public static int[] pixels;
-	public BufferedImage img;
+	public static BufferedImage img;
 	public static int camX, camY;
+	public static int camToX, camToY;
+	public static int leveli = 0;
+	
+	public static BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
 	
 
 	
-	public Handler handler;
+	public static Handler handler;
 	
 	public static int width, height; 
 	
 	public void init(){
 		
-		BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
-		
 		handler = new Handler();
 		
-		LoadImageLevel(level, 0, 0);
+		leveli = -1;
+		levelUp();
 		
 		this.addKeyListener(new KeyInput(handler));
+		
+		GraphicsProcessing.init();
 	}
 	
 	public synchronized void start(){
@@ -99,6 +106,8 @@ public class Game extends Canvas implements Runnable{
 	
 	public void tick(){
 		handler.tick();
+		camX = (int) ((camToX - camX) * 0.1 + camX);
+		camY = (int) ((camToY - camY) * 0.2 + camY);
 	}
 	
 	public void render(){
@@ -134,12 +143,19 @@ public class Game extends Canvas implements Runnable{
 		
 	}
 	
-	private void LoadImageLevel(BufferedImage image, int x, int y){
+	public static void levelUp() {
+		leveli++;
+		LoadImageLevel(level, Level.dim(leveli, 8).x, Level.dim(leveli, 8).y);
+		camX = 0;
+		camY = 0;
+	}
+	
+	private static void LoadImageLevel(BufferedImage image, int x, int y){
 		handler.object.clear();
-		
-		for(int xx = x * 16; xx < x * 16 + 16; xx++){
-			for(int yy = y * 16; yy < y * 16 + 16; yy++){
-				int pixel = image.getRGB(xx, yy);
+		System.out.println("Loading level at cell: " + x + "x" + y);
+		for(int xx = 0; xx < 16; xx++){
+			for(int yy = 0; yy < 16; yy++){
+				int pixel = image.getRGB(xx + x * 16, yy + y * 16);
 				int red = (pixel >> 16) & 0xff;
 				int green = (pixel >> 8) & 0xff;
 				int blue = (pixel) & 0xff;
