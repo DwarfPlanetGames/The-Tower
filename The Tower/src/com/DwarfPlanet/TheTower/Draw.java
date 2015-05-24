@@ -42,7 +42,7 @@ public class Draw {
 			x += Game.camX;
 			y += Game.camY;
 		}
-
+//
 		if (draw) {
 			for (int xx = 0; xx < width; xx++) {
 				for (int yy = 0; yy < height; yy++) {
