@@ -10,7 +10,7 @@ public abstract class GameObject {
 	public float y;
 	public float velX = 0, velY = 0;
 	public float width, height;
-	protected ObjectId id;
+	public ObjectId id;
 	
 	public GameObject(float x, float y,float width,float height, ObjectId id ){
 		this.x = x;

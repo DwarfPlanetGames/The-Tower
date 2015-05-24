@@ -28,9 +28,36 @@ public class Player extends GameObject{
 		x += velX;
 		y += velY;
 		
+		int v = 6; //Math.max((int) velX, (int) velY);
+		
+		for (int i = 0; i < handler.object.size(); i++) {
+			GameObject temp = handler.object.get(i);
+			
+			//Exceptions
+			if (!(
+					temp.id == ObjectId.Player
+					)){
+				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
+					y = temp.y + temp.height;
+					velY = 0;
+				}
+				if (getBounds(Side.bottom,v).intersects(temp.getBounds())) {
+					y = temp.y - height;
+					velY = 0;
+				}
+				if (getBounds(Side.left,v).intersects(temp.getBounds())) {
+					x = temp.x + temp.width;
+					velX = 0;
+				}
+				if (getBounds(Side.right,v).intersects(temp.getBounds())) {
+					x = temp.x - width;
+					velX = 0;
+				}
+			}
+		}
+		
 		Game.camX = (int) x - Game.width / 2 + (int)width / 2;
 		Game.camY = (int)y - Game.height / 2 + (int)height / 2;
-		
 	}
 
 	
