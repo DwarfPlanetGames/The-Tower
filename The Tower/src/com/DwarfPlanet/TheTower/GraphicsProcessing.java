@@ -4,8 +4,6 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
-import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
-
 public class GraphicsProcessing {
 	
 	public static int[] pixels;

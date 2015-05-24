@@ -1,34 +1,41 @@
 package com.DwarfPlanet.TheTower.Objects;
 
-import java.awt.image.BufferedImage;
+import java.awt.event.KeyEvent;
 import java.util.LinkedList;
 
 import com.DwarfPlanet.TheTower.Draw;
 import com.DwarfPlanet.TheTower.Game;
-import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 import com.DwarfPlanet.TheTower.framework.GameObject;
 import com.DwarfPlanet.TheTower.framework.Handler;
+import com.DwarfPlanet.TheTower.framework.KeyInput;
 import com.DwarfPlanet.TheTower.framework.ObjectId;
 import com.DwarfPlanet.TheTower.framework.Side;
 
 public class Player extends GameObject{
 	
 	private Handler handler;
-	private static final BufferedImage image = BufferedImageLoader.loadImage("/Level-1.png");
+	public static int walkSpeed = 1;
+	public static final int walkSpeedO = 1;
 
 	public Player(float x, float y,Handler handler) {
-		super(x, y, 64f, 64f, ObjectId.Player);
+		super(x, y, 64, 64, ObjectId.Player);
 		this.handler = handler;
-		width = 64;
-		height = 64;
 	}
 
 	
 	public void tick(LinkedList<GameObject> object) {
+		velX *= 0.9;
+		velY *= 0.9;
+		
+		if (KeyInput.keys[KeyEvent.VK_W]) velY -= walkSpeed;
+		if (KeyInput.keys[KeyEvent.VK_S]) velY += walkSpeed;
+		if (KeyInput.keys[KeyEvent.VK_A]) velX -= walkSpeed;
+		if (KeyInput.keys[KeyEvent.VK_D]) velX += walkSpeed;
+		
 		x += velX;
 		y += velY;
 		
-		int v = 6; //Math.max((int) velX, (int) velY);
+		int v = 16; //Math.max((int) velX, (int) velY);
 		
 		for (int i = 0; i < handler.object.size(); i++) {
 			GameObject temp = handler.object.get(i);
@@ -69,6 +76,6 @@ public class Player extends GameObject{
 	
 	public void render() {
 		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
-		Draw.texture((int) x, (int) y, (int) width,  (int) height, image, 0, 0, false);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.level, 0, 0, false);
 	}
 }

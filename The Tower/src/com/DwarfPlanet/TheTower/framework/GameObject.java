@@ -16,6 +16,8 @@ public abstract class GameObject {
 		this.x = x;
 		this.y = y;
 		this.id = id;
+		this.width = width;
+		this.height = height;
 	}
 	
 	public abstract void tick(LinkedList<GameObject> object);
