@@ -135,8 +135,7 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	private void LoadImageLevel(BufferedImage image, int x, int y){
-		int w = image.getWidth();
-		int h = image.getHeight();
+		handler.object.clear();
 		
 		for(int xx = x * 16; xx < x * 16 + 16; xx++){
 			for(int yy = y * 16; yy < y * 16 + 16; yy++){
