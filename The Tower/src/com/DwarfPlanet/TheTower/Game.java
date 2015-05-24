@@ -11,6 +11,7 @@ import com.DwarfPlanet.TheTower.Objects.Block;
 import com.DwarfPlanet.TheTower.Objects.Entry;
 import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
+import com.DwarfPlanet.TheTower.Objects.Table;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
@@ -174,7 +175,7 @@ public class Game extends Canvas implements Runnable{
 					handler.addObject(new Hole(xx*128,yy*128));
 				}
 				if(red == 255 && green == 255 && blue == 0) {
-					//TODO add table
+					handler.addObject(new Table(xx*128,yy*128));
 				}
 			}
 		}
