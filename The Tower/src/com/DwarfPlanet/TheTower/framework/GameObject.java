@@ -4,6 +4,8 @@ package com.DwarfPlanet.TheTower.framework;
 import java.awt.Rectangle;
 import java.util.LinkedList;
 
+import com.DwarfPlanet.TheTower.Game;
+
 public abstract class GameObject {
 
 	public float x;
@@ -71,6 +73,9 @@ public abstract class GameObject {
 			return new Rectangle((int) x + (int) width - v, (int) y + v, (int) v, (int) height - 2*v);
 		}
 		throw new NullPointerException("Couldn't generate one of the four rectangles: top, bottom, left, right.");
+	}
+	public void dispose() {
+		Game.handler.object.remove(this);
 	}
 
 }

@@ -1,8 +1,11 @@
 package com.DwarfPlanet.TheTower;
 
 import java.awt.Graphics2D;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
+
+import com.DwarfPlanet.TheTower.framework.KeyInput;
 
 public class GraphicsProcessing {
 	
@@ -17,7 +20,7 @@ public class GraphicsProcessing {
 			if (y % 2 == 0) {
 				pixels[y] = 0x16000000;
 			} else {
-				pixels[y] = 0x00ffffff;
+				pixels[y] = 0x16ffffff;
 			}
 		}
 	}
@@ -31,11 +34,11 @@ public class GraphicsProcessing {
 	}
 	
 	public static void postBuffer() {
-		
 	}
 
 	public static void postGraphics(Graphics2D g) {
-		g.drawImage(img, 0, 0, Game.width * Window.scale, Game.height * Window.scale, null);
+		if (!KeyInput.keys[KeyEvent.VK_E])
+			g.drawImage(img, 0, 0, Game.width * Window.scale, Game.height * Window.scale, null);
 	}
 	
 }

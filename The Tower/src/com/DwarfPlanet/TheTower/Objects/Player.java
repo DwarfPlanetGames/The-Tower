@@ -1,6 +1,7 @@
 package com.DwarfPlanet.TheTower.Objects;
 
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseEvent;
 import java.util.LinkedList;
 
 import com.DwarfPlanet.TheTower.Draw;
@@ -41,11 +42,7 @@ public class Player extends GameObject{
 			GameObject temp = handler.object.get(i);
 			
 			//Exceptions
-			if (!( false
-					|| temp.id == ObjectId.Player
-					|| temp.id == ObjectId.Hole
-					|| temp.id == ObjectId.Entry
-					)){
+			if (temp.id == ObjectId.Block){
 				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
 					y = temp.y + temp.height;
 					velY = 0;
@@ -71,6 +68,10 @@ public class Player extends GameObject{
 		
 		Game.camToX = (int) x - Game.width / 2 + (int)width / 2;
 		Game.camToY = (int)y - Game.height / 2 + (int)height / 2;
+		
+		if (KeyInput.mouseButtons[MouseEvent.BUTTON1]) {
+			handler.object.add(new Bullet(x,y));
+		}
 	}
 
 	

@@ -6,6 +6,7 @@ public enum ObjectId {
 	Hole,
 	Entry,
 	Zombie,
+	Bullet,
 	
 	;
 }

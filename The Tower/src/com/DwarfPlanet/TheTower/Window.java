@@ -17,6 +17,7 @@ public class Window {
 		JFrame frame = new JFrame(title);
 		Game.width = w/ scale;
 		Game.height = h /scale;
+		game.init();
 		frame.add(game);
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

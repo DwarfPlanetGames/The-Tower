@@ -31,6 +31,7 @@ public class Game extends Canvas implements Runnable {
 	public static int camToX, camToY;
 	public static int leveli = 0;
 	public static int time = 0;
+	public static KeyInput k;
 
 	public static final BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
 	public static final BufferedImage texture = BufferedImageLoader.loadImage("/128SpriteSheet.png");
@@ -38,15 +39,20 @@ public class Game extends Canvas implements Runnable {
 	public static Handler handler;
 
 	public static int width, height;
+	
+	public Game() {
+		handler = new Handler();
+		k = new KeyInput(handler);
+
+		addKeyListener(k);
+		addMouseListener(k);
+		addMouseMotionListener(k);
+	}
 
 	public void init() {
 
-		handler = new Handler();
-
 		leveli = -1 + 1;
 		levelUp();
-
-		this.addKeyListener(new KeyInput(handler));
 
 		GraphicsProcessing.init();
 	}
@@ -63,7 +69,6 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public void run() {
-		init();
 		requestFocus();
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 60D;
