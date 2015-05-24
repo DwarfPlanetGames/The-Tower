@@ -56,7 +56,7 @@ public class Game extends Canvas implements Runnable{
 
 	public void run() {
 		init();
-		this.requestFocus();
+		requestFocus();
 		long lastTime = System.nanoTime();
 		double nsPerTick = 1000000000D / 60D;
 		
