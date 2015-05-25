@@ -42,7 +42,7 @@ public class Bullet extends GameObject {
 
 	@Override
 	public void render() {
-		Draw.rectangle((int) x, (int) y, (int) width, (int) height, 0xff0000);
+		Draw.rectangle((int) x+2, (int) y+2, (int) width-4, (int) height-4, 0xff0000);
 		
 	}
 

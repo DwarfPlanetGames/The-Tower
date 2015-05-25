@@ -28,18 +28,19 @@ public class GraphicsProcessing {
 	}
 	
 	public static void preBuffer() {
-		for (int x = -1; x < Game.width / 128 + 2; x++) {
-			for (int y = -Game.height / 128 - 1; y < 1; y++) {
-				//Draw.texture(-Game.camX % 128 + 128 * x, -Game.camY % 128 - 128 * y, 128, 128, Game.texture, 1, 0, true);
+		if (KeyInput.keys[KeyEvent.VK_E])
+			for (int x = -1; x < Game.width / 128 + 2; x++) {
+				for (int y = -Game.height / 128 - 1; y < 1; y++) {
+					Draw.texture(-Game.camX % 128 + 128 * x, -Game.camY % 128 - 128 * y, 128, 128, Game.texture, 1, 0, true);
+				}
 			}
-		}
 	}
 	
 	public static void postBuffer() {
 	}
 
 	public static void postGraphics(Graphics2D g) {
-		if (!KeyInput.keys[KeyEvent.VK_E]) {
+		if (KeyInput.keys[KeyEvent.VK_E]) {
 			g.setColor(Color.WHITE);
 			g.fillRoundRect(-10, -10, Window.width, 30, 10,10);
 			g.setColor(Color.BLACK);
