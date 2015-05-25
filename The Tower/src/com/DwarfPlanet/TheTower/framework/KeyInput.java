@@ -42,7 +42,7 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	public void mouseDragged(MouseEvent e) {
 		mouse.x = e.getX();
 		mouse.y = e.getY();
-		mouse.x /= Window.scale;
+		mouse.x = (int) ((double) mouse.x / (double) Window.scale);
 		mouse.y /= Window.scale;
 		camMouse.x = mouse.x + Game.camX;
 		camMouse.y = mouse.y + Game.camY;

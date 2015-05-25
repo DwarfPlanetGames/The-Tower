@@ -137,7 +137,7 @@ public class Game extends Canvas implements Runnable {
 		if (camY + height > 16 * 128) camY = 16 * 128 - height;
 
 		for (int i = 0; i < pixels.length; i++) {
-			pixels[i] = 0;
+			pixels[i] = 0x888888;
 		}
 
 		GraphicsProcessing.preBuffer();
@@ -160,6 +160,7 @@ public class Game extends Canvas implements Runnable {
 		camY = 0;
 		camToY = 0;
 		time = 0;
+		Player.health = 100;
 	}
 
 	private static void LoadImageLevel(BufferedImage image, int x, int y) {

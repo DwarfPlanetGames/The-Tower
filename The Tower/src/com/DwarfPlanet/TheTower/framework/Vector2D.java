@@ -31,4 +31,21 @@ public class Vector2D {
 		*/
 	}
 	
+	public Side getSide() {
+		if (Math.abs(to.x - from.x) > Math.abs(to.y - from.y)) {
+			//this is x (left and right)
+			if (to.x > from.x)
+				return Side.right;
+			else
+				return Side.left;
+		} else {
+			//this is y (top and bottom)
+			if (to.y > from.y) 
+				return Side.bottom;
+			else
+				return Side.top;
+		}
+	}
+	
+	
 }

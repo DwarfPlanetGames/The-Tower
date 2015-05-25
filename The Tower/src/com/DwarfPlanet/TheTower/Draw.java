@@ -46,8 +46,36 @@ public class Draw {
 		if (draw) {
 			for (int xx = 0; xx < width; xx++) {
 				for (int yy = 0; yy < height; yy++) {
-					int pixel = image.getRGB(xx + cellX * 128, yy + cellY * 128);
+					int pixel = image.getRGB(xx + cellX * width, yy + cellY * height);
 					if (pixel != 0xffff00ff) rectangle(xx + x, yy + y, 1, 1, pixel);
+				}
+			}
+		}
+	}
+	
+	public static void textureFlip(int x, int y, int width, int height, BufferedImage image, int cellX, int cellY, boolean dontMoveToCam) {
+		boolean draw = false;
+		Rectangle r = new Rectangle();
+		r.x = Game.camX;
+		r.y = Game.camY;
+		r.width = Game.width;
+		r.height = Game.height;
+		if (r.contains(x, y)) draw = true;
+		if (r.contains(x + width, y)) draw = true;
+		if (r.contains(x, y + height)) draw = true;
+		if (r.contains(x + width, y + height)) draw = true;
+
+		if (dontMoveToCam) {
+			draw = true;
+			x += Game.camX;
+			y += Game.camY;
+		}
+
+		if (draw) {
+			for (int xx = width; xx > 0; xx--) {
+				for (int yy = 0; yy < height; yy++) {
+					int pixel = image.getRGB(xx + cellX * width, yy + cellY * height);
+					if (pixel != 0xffff00ff) rectangle(-xx + x + width, yy + y, 1, 1, pixel);
 				}
 			}
 		}

@@ -6,6 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.Objects.Remark;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 
@@ -37,6 +38,7 @@ public class GraphicsProcessing {
 	}
 	
 	public static void postBuffer() {
+		Draw.rectangle(Game.camX, Game.camY + 10, (int) Player.health, 10, 0x00ff00);
 	}
 
 	public static void postGraphics(Graphics2D g) {

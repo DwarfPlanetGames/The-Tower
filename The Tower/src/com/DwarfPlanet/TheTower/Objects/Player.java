@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import com.DwarfPlanet.TheTower.Draw;
 import com.DwarfPlanet.TheTower.Game;
+import com.DwarfPlanet.TheTower.framework.FloatPoint;
 import com.DwarfPlanet.TheTower.framework.GameObject;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
@@ -18,6 +19,7 @@ public class Player extends GameObject{
 	private Handler handler;
 	public static int walkSpeed = 1;
 	public static final int walkSpeedO = 1;
+	public static float health = 100;
 
 	public Player(float x, float y,Handler handler) {
 		super(x, y, 64, 64, ObjectId.Player);
@@ -26,6 +28,8 @@ public class Player extends GameObject{
 
 	
 	public void tick(LinkedList<GameObject> object) {
+		if (health <= 0)
+			System.exit(0);
 		velX *= 0.9;
 		velY *= 0.9;
 		
@@ -78,6 +82,15 @@ public class Player extends GameObject{
 	
 	public void render() {
 		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
-		Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 0, false);
+		Vector2D v = new Vector2D(new FloatPoint(x + 32,y + 32), new FloatPoint(KeyInput.camMouse.x, KeyInput.camMouse.y));
+		Side s = v.getSide();
+		if (s == Side.right)
+			Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 0, false);
+		if (s == Side.left)
+			Draw.textureFlip((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 0, false);
+		if (s == Side.top)
+			Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 1, false);
+		if (s == Side.bottom)
+			Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 2, false);
 	}
 }
