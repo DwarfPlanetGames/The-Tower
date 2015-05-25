@@ -51,7 +51,7 @@ public class Game extends Canvas implements Runnable {
 
 	public void init() {
 
-		leveli = -1 + 1;
+		leveli = -1 + 0;
 		levelUp();
 
 		GraphicsProcessing.init();

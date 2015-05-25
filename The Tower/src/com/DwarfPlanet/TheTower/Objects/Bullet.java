@@ -3,10 +3,12 @@ package com.DwarfPlanet.TheTower.Objects;
 import java.util.LinkedList;
 
 import com.DwarfPlanet.TheTower.Draw;
+import com.DwarfPlanet.TheTower.Game;
 import com.DwarfPlanet.TheTower.framework.FloatPoint;
 import com.DwarfPlanet.TheTower.framework.GameObject;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 import com.DwarfPlanet.TheTower.framework.ObjectId;
+import com.DwarfPlanet.TheTower.framework.Side;
 import com.DwarfPlanet.TheTower.framework.Vector2D;
 
 public class Bullet extends GameObject {
@@ -26,6 +28,16 @@ public class Bullet extends GameObject {
 		x = v.move(time*speed).x;
 		y = v.move(time*speed).y;
 		if (time > 100) dispose();
+		for (int i = 0; i < Game.handler.object.size(); i++) {
+			GameObject temp = Game.handler.object.get(i);
+			
+			//Exceptions
+			if (temp.id == ObjectId.Block){
+				if (getBounds().intersects(temp.getBounds())) {
+					dispose();
+				}
+			}
+		}
 	}
 
 	@Override
