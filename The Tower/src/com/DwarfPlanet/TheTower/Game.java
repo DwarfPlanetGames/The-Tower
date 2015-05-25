@@ -160,7 +160,8 @@ public class Game extends Canvas implements Runnable {
 		camY = 0;
 		camToY = 0;
 		time = 0;
-		Player.health = 100;
+		if (Player.health < 100)
+			Player.health = 100;
 	}
 
 	private static void LoadImageLevel(BufferedImage image, int x, int y) {

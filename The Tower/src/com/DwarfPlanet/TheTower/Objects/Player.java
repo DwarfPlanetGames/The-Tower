@@ -20,6 +20,7 @@ public class Player extends GameObject{
 	public static int walkSpeed = 1;
 	public static final int walkSpeedO = 1;
 	public static float health = 100;
+	public static int xl, yl;
 
 	public Player(float x, float y,Handler handler) {
 		super(x, y, 64, 64, ObjectId.Player);
@@ -73,9 +74,12 @@ public class Player extends GameObject{
 		
 		Game.camToX = (int) x - Game.width / 2 + (int)width / 2;
 		Game.camToY = (int)y - Game.height / 2 + (int)height / 2;
+		xl = (int) x;
+		yl = (int) y;
 		
 		if (KeyInput.mouseButtons[MouseEvent.BUTTON1]) {
 			handler.object.add(new Bullet(x+28,y+28));
+			health -= 0.05;
 		}
 	}
 
