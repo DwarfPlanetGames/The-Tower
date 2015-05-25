@@ -11,6 +11,7 @@ import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 import com.DwarfPlanet.TheTower.framework.ObjectId;
 import com.DwarfPlanet.TheTower.framework.Side;
+import com.DwarfPlanet.TheTower.framework.Vector2D;
 
 public class Player extends GameObject{
 	
