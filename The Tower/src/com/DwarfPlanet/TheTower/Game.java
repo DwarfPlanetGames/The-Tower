@@ -9,6 +9,7 @@ import java.awt.image.DataBufferInt;
 
 import com.DwarfPlanet.TheTower.Objects.Block;
 import com.DwarfPlanet.TheTower.Objects.Entry;
+import com.DwarfPlanet.TheTower.Objects.Escape;
 import com.DwarfPlanet.TheTower.Objects.Hole;
 import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.Objects.Table;
@@ -191,6 +192,9 @@ public class Game extends Canvas implements Runnable {
 				}
 				if (red == 255 && green == 0 && blue == 0) {
 					handler.addObject(new Zombie(xx * 128 + 32, yy * 128 + 32, handler));
+				}
+				if (red == 0 && green == 127 && blue == 127) {
+					handler.addObject(new Escape(xx * 128 + 32, yy * 128 + 32));
 				}
 			}
 		}
