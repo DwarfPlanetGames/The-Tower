@@ -35,6 +35,7 @@ public class Game extends Canvas implements Runnable {
 
 	public static final BufferedImage level = BufferedImageLoader.loadImage("/Level-1.png");
 	public static final BufferedImage texture = BufferedImageLoader.loadImage("/128SpriteSheet.png");
+	public static final BufferedImage playerSprite = BufferedImageLoader.loadImage("/playerSprites.png");
 
 	public static Handler handler;
 
@@ -194,7 +195,7 @@ public class Game extends Canvas implements Runnable {
 	}
 
 	public static void main(String args[]) {
-		new Window(800, 500, "The Tower", new Game());
+		new Window(1280, 720, "The Tower", new Game());
 	}
 
 }
