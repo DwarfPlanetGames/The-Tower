@@ -7,9 +7,12 @@ import javax.swing.JFrame;
 public class Window {
 	
 	public static int scale = 2;
+	public static int width;
+	public static int height;
 	
 	public Window(int w, int h, String title,Game game){
-		
+		width = w;
+		height = h;
 		game.setPreferredSize(new Dimension(w,h));
 		game.setMaximumSize(new Dimension(w,h));
 		game.setMinimumSize(new Dimension(w,h));

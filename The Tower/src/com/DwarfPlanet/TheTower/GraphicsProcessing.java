@@ -1,10 +1,12 @@
 package com.DwarfPlanet.TheTower;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
 
+import com.DwarfPlanet.TheTower.Objects.Remark;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 
 public class GraphicsProcessing {
@@ -37,8 +39,14 @@ public class GraphicsProcessing {
 	}
 
 	public static void postGraphics(Graphics2D g) {
-		if (!KeyInput.keys[KeyEvent.VK_E])
+		if (!KeyInput.keys[KeyEvent.VK_E]) {
+			g.setColor(Color.WHITE);
+			g.fillRoundRect(-10, -10, Window.width, 30, 10,10);
+			g.setColor(Color.BLACK);
+			g.drawRoundRect(-10, -10, Window.width, 30, 10,10);
+			g.drawString(Remark.remarks[Game.leveli % Remark.remarks.length], 10, 15);
 			g.drawImage(img, 0, 0, Game.width * Window.scale, Game.height * Window.scale, null);
+		}
 	}
 	
 }
