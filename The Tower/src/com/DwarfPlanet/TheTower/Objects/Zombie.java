@@ -86,6 +86,9 @@ public class Zombie extends GameObject {
 					velX = 0;
 				}
 				break;
+			case Bullet:
+				if (getBounds().intersects(temp.getBounds()))
+					dispose();
 			}
 		}
 		

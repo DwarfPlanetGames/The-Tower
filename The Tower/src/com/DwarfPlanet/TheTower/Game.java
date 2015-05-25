@@ -115,6 +115,8 @@ public class Game extends Canvas implements Runnable {
 		handler.tick();
 		camX = (int) ((camToX - camX) * 0.1 + camX);
 		camY = (int) ((camToY - camY) * 0.2 + camY);
+		KeyInput.camMouse.x = KeyInput.mouse.x + Game.camX;
+		KeyInput.camMouse.y = KeyInput.mouse.y + Game.camY;
 	}
 
 	public void render() {

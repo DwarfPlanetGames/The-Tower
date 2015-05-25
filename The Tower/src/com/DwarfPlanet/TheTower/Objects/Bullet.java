@@ -11,19 +11,20 @@ import com.DwarfPlanet.TheTower.framework.Vector2D;
 
 public class Bullet extends GameObject {
 	
-	public Vector2D v;
+	public static Vector2D v;
 	public int time = 0;
+	public int speed = 8;
 	
 	public Bullet(float x, float y) {
 		super(x, y, 8, 8, ObjectId.Bullet);
-		v = new Vector2D(new FloatPoint(x,y), new FloatPoint(KeyInput.camMouse.x, KeyInput.camMouse.y));
+		v = new Vector2D(new FloatPoint(x,y), new FloatPoint(KeyInput.camMouse.x - width / 2, KeyInput.camMouse.y - height / 2));
 	}
 
 	@Override
 	public void tick(LinkedList<GameObject> object) {
 		time++;
-		x = v.move(time).x;
-		y = v.move(time).y;
+		x = v.move(time*speed).x;
+		y = v.move(time*speed).y;
 		if (time > 100) dispose();
 	}
 

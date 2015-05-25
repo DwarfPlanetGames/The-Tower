@@ -70,7 +70,7 @@ public class Player extends GameObject{
 		Game.camToY = (int)y - Game.height / 2 + (int)height / 2;
 		
 		if (KeyInput.mouseButtons[MouseEvent.BUTTON1]) {
-			handler.object.add(new Bullet(x,y));
+			handler.object.add(new Bullet(x+28,y+28));
 		}
 	}
 

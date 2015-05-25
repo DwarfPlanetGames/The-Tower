@@ -8,6 +8,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import com.DwarfPlanet.TheTower.Game;
+import com.DwarfPlanet.TheTower.Window;
 
 public class KeyInput implements KeyListener, MouseListener, MouseMotionListener {
 	Handler handler;
@@ -42,6 +43,8 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	public void mouseDragged(MouseEvent e) {
 		mouse.x = e.getX();
 		mouse.y = e.getY();
+		mouse.x /= Window.scale;
+		mouse.y /= Window.scale;
 		camMouse.x = mouse.x + Game.camX;
 		camMouse.y = mouse.y + Game.camY;
 	}
@@ -50,6 +53,8 @@ public class KeyInput implements KeyListener, MouseListener, MouseMotionListener
 	public void mouseMoved(MouseEvent e) {
 		mouse.x = e.getX();
 		mouse.y = e.getY();
+		mouse.x /= Window.scale;
+		mouse.y /= Window.scale;
 		camMouse.x = mouse.x + Game.camX;
 		camMouse.y = mouse.y + Game.camY;		
 	}
