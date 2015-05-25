@@ -77,6 +77,6 @@ public class Player extends GameObject{
 	
 	public void render() {
 		//Draw.rectangle((int)x, (int)y, (int) width, (int) height, 0xffffff);
-		Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.level, 0, 0, false);
+		Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 0, 0, false);
 	}
 }
