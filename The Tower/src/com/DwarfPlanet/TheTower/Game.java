@@ -3,6 +3,7 @@ package com.DwarfPlanet.TheTower;
 import java.awt.Canvas;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.event.MouseEvent;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 import java.awt.image.DataBufferInt;
@@ -15,6 +16,7 @@ import com.DwarfPlanet.TheTower.Objects.Player;
 import com.DwarfPlanet.TheTower.Objects.Table;
 import com.DwarfPlanet.TheTower.Objects.Zombie;
 import com.DwarfPlanet.TheTower.framework.BufferedImageLoader;
+import com.DwarfPlanet.TheTower.framework.Calc;
 import com.DwarfPlanet.TheTower.framework.Handler;
 import com.DwarfPlanet.TheTower.framework.KeyInput;
 import com.DwarfPlanet.TheTower.framework.Level;
@@ -53,7 +55,7 @@ public class Game extends Canvas implements Runnable {
 
 	public void init() {
 
-		leveli = -1 + 11;
+		leveli = -2 + 4;
 		levelUp();
 
 		GraphicsProcessing.init();
@@ -114,9 +116,17 @@ public class Game extends Canvas implements Runnable {
 
 	public void tick() {
 		time++;
+		//if (KeyInput.mouseButtons[MouseEvent.BUTTON2]) {
+			camX = Calc.avg(KeyInput.camMouse.x, camToX - width / 2);
+			camY = Calc.avg(KeyInput.camMouse.y, camToY - height / 2);
+		//}
 		handler.tick();
 		camX = (int) ((camToX - camX) * 0.1 + camX);
 		camY = (int) ((camToY - camY) * 0.2 + camY);
+		if (camX < 0) camX = 0;
+		if (camY < 0) camY = 0;
+		if (camX + width > 16 * 128) camX = 16 * 128 - width;
+		if (camY + height > 16 * 128) camY = 16 * 128 - height;
 		KeyInput.camMouse.x = KeyInput.mouse.x + Game.camX;
 		KeyInput.camMouse.y = KeyInput.mouse.y + Game.camY;
 	}
@@ -131,11 +141,6 @@ public class Game extends Canvas implements Runnable {
 		Graphics g = bs.getDrawGraphics();
 
 		Graphics2D g2d = (Graphics2D) g;
-
-		if (camX < 0) camX = 0;
-		if (camY < 0) camY = 0;
-		if (camX + width > 16 * 128) camX = 16 * 128 - width;
-		if (camY + height > 16 * 128) camY = 16 * 128 - height;
 
 		for (int i = 0; i < pixels.length; i++) {
 			pixels[i] = 0x888888;

@@ -49,6 +49,11 @@ public class GraphicsProcessing {
 			g.drawRoundRect(-10, -10, Window.width, 30, 10,10);
 			g.drawString(Remark.remarks[Game.leveli % Remark.remarks.length], 10, 15);
 			g.drawImage(img, 0, 0, Game.width * Window.scale, Game.height * Window.scale, null);
+		} else {
+			g.setColor(Color.WHITE);
+			g.fillRoundRect(-10, -10, Window.width, 30, 10,10);
+			g.setColor(Color.BLACK);
+			g.drawString(Remark.remarks[Game.leveli % Remark.remarks.length], 10, 15);
 		}
 	}
 	

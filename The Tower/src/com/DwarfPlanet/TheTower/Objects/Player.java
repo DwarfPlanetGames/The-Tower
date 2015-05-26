@@ -29,8 +29,13 @@ public class Player extends GameObject{
 
 	
 	public void tick(LinkedList<GameObject> object) {
-		if (health <= 0)
-			System.exit(0);
+		if (health <= 0){
+			Game.leveli--;
+			Game.levelUp();
+		}
+		if (health < 100) {
+			health += 0.01;
+		}
 		velX *= 0.9;
 		velY *= 0.9;
 		
@@ -78,7 +83,11 @@ public class Player extends GameObject{
 		yl = (int) y;
 		
 		if (KeyInput.mouseButtons[MouseEvent.BUTTON1]) {
-			handler.object.add(new Bullet(x+28,y+28));
+			handler.object.add(new Bullet(x+28,y+28,3,100));
+			health -= 0.05;
+		}
+		if (KeyInput.mouseButtons[MouseEvent.BUTTON3]) {
+			handler.object.add(new Bullet(x+28,y+28,10,10));
 			health -= 0.05;
 		}
 	}

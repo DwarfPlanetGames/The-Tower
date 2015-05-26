@@ -15,13 +15,15 @@ import com.DwarfPlanet.TheTower.framework.Vector2D;
 public class Zombie extends GameObject {
 	
 	private Handler handler;
-	public static int walkSpeed = 1;
+	public static int walkSpeed = 2;
+	public int health = 100;
 	
 	public Zombie(float x, float y,Handler handler) {
 		super(x, y, 64, 64, ObjectId.Zombie);
 		this.handler = handler;
+		health = 100;
 	}
-//
+	
 	@Override
 	public void tick(LinkedList<GameObject> object) {
 		for (int i = 0; i < handler.object.size(); i++) {
@@ -70,8 +72,11 @@ public class Zombie extends GameObject {
 				break;
 			case Bullet:
 				if (getBounds().intersects(temp.getBounds())) {
-					dispose();
-					Player.health += 10;
+					health -= ((Bullet) temp).power;
+					temp.dispose();
+					if (health < 0) {
+						dispose();
+					}
 				}
 				break;
 			case Player:
@@ -80,7 +85,7 @@ public class Zombie extends GameObject {
 				if(temp.y > y) y += walkSpeed;
 				if(temp.y < y) y -= walkSpeed;
 				if (getBounds().intersects(temp.getBounds())) {
-					Player.health -= 0.25;
+					Player.health -= 1.5;
 				}
 				if (getBounds(Side.top,v).intersects(temp.getBounds())) {
 					y = temp.y + temp.height;
@@ -118,6 +123,9 @@ public class Zombie extends GameObject {
 			Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 1, 1, false);
 		if (s == Side.bottom)
 			Draw.texture((int) x, (int) y, (int) width,  (int) height, Game.playerSprite, 1, 2, false);
+		if(health < 100) {
+			Draw.rectangle((int) x - (100 - (int) width) / 2, (int) y-4, health, 2, 0xffffff);
+		}
 	}
 
 }
