@@ -4,7 +4,7 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 public class Draw {
-
+	//S
 	public static void rectangle(int x, int y, int width, int height, int color) {
 		x -= Game.camX;
 		y -= Game.camY;
